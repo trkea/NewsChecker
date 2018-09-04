@@ -15,13 +15,15 @@ class GunosyNews():
 	def get_news(self):
 		html = self.get_html()
 		div_news = html.find_all("div",class_="list_title")
+		span_times = html.find_all("span",class_="list_desc_media")
 		all_news = []
 		i = 0
-		for div in div_news:
+		for div,span in zip(div_news,span_times):
 			a_tag = div.find("a")
 			text = a_tag.text
 			href = a_tag.get('href')
-			news_info ={"title":text, "href":href}
+			time = span.text
+			news_info ={"title":text, "href":href,"time":time}
 			all_news.append(news_info)
 		return all_news
 
