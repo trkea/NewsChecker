@@ -1,0 +1,21 @@
+import unittest
+import sys
+sys.path.append('../../NewsChecker')
+from src import GunosyNews as gn
+
+class GunosyNewsTest(unittest.TestCase):
+
+	def test_get_html(self):
+	    news = gn.GunosyNews('https://gunosy.com/categories/7')
+	    html_str = news.get_html().text
+	    self.assertTrue(html_str.find('<!DOCTYPE html>'))
+
+
+	def test_get_news(self):
+	    news = gn.GunosyNews('https://gunosy.com/categories/7')
+	    news_list = news.get_news()
+	    key_list = list(news_list[0].keys())
+	    self.assertTrue(len(news_list) > 10 and key_list[0] == "title" and key_list[1] == "href")
+
+if __name__ == '__main__':
+	unittest.main()
