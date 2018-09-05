@@ -1,18 +1,14 @@
 import urllib.request
 from bs4 import BeautifulSoup
+from . import HtmlParser as hp
 
 class VehicleNews():
 
 	def __init__(self,url):
 		self.url = url
 
-	def get_html(self):
-		html = urllib.request.urlopen(self.url)
-		soup = BeautifulSoup(html,"html.parser")
-		return soup	
-
 	def get_news(self):
-	    html = self.get_html()
+	    html = hp.HtmlParser.get_html('',url=self.url)
 	    div_news = html.find_all("div",class_="post-list-detail")
 	    div_time = html.find_all("div",class_="post-list-date")
 	    all_list = []
