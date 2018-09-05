@@ -1,15 +1,10 @@
 import unittest
 import sys
-sys.path.append('../../NewsChecker')
+sys.path.append("../../NewsChecker")
 from src import GunosyNews as gn
+from src import *
 
 class GunosyNewsTest(unittest.TestCase):
-
-	def test_get_html(self):
-	    news = gn.GunosyNews('https://gunosy.com/categories/7')
-	    html_str = news.get_html().text
-	    self.assertTrue(html_str.find('<!DOCTYPE html>'))
-
 
 	def test_get_news(self):
 	    news = gn.GunosyNews('https://gunosy.com/categories/7')
