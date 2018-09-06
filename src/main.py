@@ -1,27 +1,29 @@
 from bottle import get, static_file,route, run,template,request
-import feedparser
+import requests
+import GunosyNews as gn
+import PrtimesNews as pn
+import VehicleNews as vn
 
 @route("/")
 def index():
-    url = 'feed://feeds.japan.zdnet.com/rss/zdnet/all.rdf'
-    rss = feedparser.parse(url)
-
-    zdnet_list = []
-    for data in rss['entries']:
-        value = data['summary_detail']['value'].replace('<p>', '').replace('</p>', '')
-        zdnet_list.append([
-                           data['updated']
-                           , data['title']
-                           , data['links'][0]['href']
-                           , value[:value.find('<br')]
-                           , value[value.find('<img'):].replace('<img src="', '').replace('" /></a>', '')
-                           ])
-
-    return template("top",zdnet_list=zdnet_list)
+    return template("top")
 
 @route("/sample")
 def sample():
     return "<h1>Hello world</h1><p> I'm at sample</p><a href='/'>移動する</a>"
+
+global news
+@route("/news_list")
+def news_list():
+	select = request.GET.get("name")
+	if select == "Gunosy":
+		news = gn.GunosyNews("https://gunosy.com/categories/7")
+	if select == "Vehicle":
+	    news = vn.VehicleNews("https://trafficnews.jp/category/road")
+	if select == "Prtimes":
+	    news = pn.PrtimesNews("https://prtimes.jp/technology/")    	
+	news_list = news.get_news()
+	return template("news_list",news_list=news_list)
 
 @get("/static/css/<filepath:re:.*\.css>")
 def css(filepath):
