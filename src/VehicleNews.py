@@ -1,6 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
-from . import HtmlParser as hp
+import HtmlParser as hp
 
 class VehicleNews():
 
@@ -15,7 +15,7 @@ class VehicleNews():
 	    for news,time in zip(div_news,div_time):
 	        a_tag = news.find("a")
 	        title = a_tag.text
-	        href = a_tag.get("href")
+	        href =  "https://trafficnews.jp" + a_tag.get("href")
 	        time = time.find("time").text
 	        news_info = {"title": title, "href": href, "time": time}
 	        all_list.append(news_info)

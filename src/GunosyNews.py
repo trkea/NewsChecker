@@ -1,6 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
-from . import  HtmlParser as hp
+import  HtmlParser as hp
 
 class GunosyNews():
 

@@ -1,4 +1,4 @@
-from . import HtmlParser as hp
+import HtmlParser as hp
 
 class PrtimesNews:
 
@@ -11,7 +11,7 @@ class PrtimesNews:
 	    date_list = html.find_all("time",class_="time-release time-release-ordinary icon-time-release-svg")
 	    all_news = []
 	    for news,date in zip(news_list,date_list):
-	    	href = news.get("href")
+	    	href = "https://prtimes.jp" + news.get("href")
 	    	title = news.get("title")
 	    	time = date.text.replace("\n","").replace(" ","")
 	    	news_info = {"title":title, "href":href, "time":time}
