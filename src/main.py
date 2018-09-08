@@ -22,16 +22,17 @@ def news_list():
 	if select == "Prtimes":
 	    news = pn.PrtimesNews("https://prtimes.jp/technology/")   	
 	news_list = news.get_news()
-	return template("news_list",news_list=news_list,name=select)
+	return template("news_list", news_list=news_list, name=select)
+
 
 @get("/static/css/<filepath:re:.*\.css>")
 def css(filepath):
     return static_file(filepath, root="static/css")
 
+
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
-
 
 run(host='localhost', port=8080, debug=True, reloader=True)
 
