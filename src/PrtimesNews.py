@@ -14,7 +14,7 @@ class PrtimesNews:
 	    	href = "https://prtimes.jp" + news.get("href")
 	    	title = news.get("title")
 	    	time = date.text.replace("\n","").replace(" ","")
-	    	news_info = {"title":title, "href":href, "time":time}
+	    	news_info = {"title": title, "href": href, "time": time}
 	    	all_news.append(news_info)
 	    return all_news
 
