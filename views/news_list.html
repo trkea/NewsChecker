@@ -7,8 +7,15 @@
 <body>
 	<ul>
 	%for news in news_list:
-	    <li><a href='{{news["href"]}}'>{{news["title"]}}</a></li>
+	    <li><a href='{{news["href"]}}' target="_blank">{{news["title"]}}</a></li>
 	%end  
 	</ul>  
 </body>
+<script>
+document.onkeydown = function (e){
+    if(e.key === "ArrowLeft") {
+    	history.back();
+    }
+}
+</script>
 </html>
