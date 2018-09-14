@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <link rel="stylesheet" href="/static/css/top.css" type="text/css">
+<link rel="stylesheet" href="/static/css/background.css" type="text/css">
     <title>NewsChecker</title>
 </head>
-<script type="text/javascript" src="../static/js/keydown.js"></script>
 <body>
-   <h1 class="title">News Checker</h1>
+   <div class="title">
+       <h2>News Checker</h2>
+   </div>
    <h3 class="listTitle">サイト一覧</h3>
    <ul>
    	%for name,news in zip(name_list, news_list):
