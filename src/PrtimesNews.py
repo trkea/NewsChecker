@@ -1,4 +1,6 @@
-import HtmlParser as hp
+import sys
+sys.path.append("../../NewsChecker")
+from src import HtmlParser as hp
 
 class PrtimesNews:
 

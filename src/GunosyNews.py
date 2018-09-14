@@ -1,8 +1,10 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import  HtmlParser as hp
+import sys
+sys.path.append("../../NewsChecker")
+from src import  HtmlParser as hp
 
-class TravelVoiceNews():
+class GunosyNews():
 
 	def __init__(self,url):
 		self.url = url

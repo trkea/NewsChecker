@@ -1,6 +1,8 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import  HtmlParser as hp
+import sys
+sys.path.append("../../NewsChecker")
+from src import  HtmlParser as hp
 
 class TravelVoiceNews():
 
@@ -18,7 +20,7 @@ class TravelVoiceNews():
 			href = li_tag.find("a").get("href")
 			time = li_tag.find("span").text.replace(" ", "")
 			news_info = {"title": title, "href": href, "time": time}
-			all_news.append(news_info)	
+			all_news.append(news_info)
 		return all_news
 
 
