@@ -3,15 +3,17 @@ import requests
 import GunosyNews as gn
 import PrtimesNews as pn
 import VehicleNews as vn
+import TravelVoiceNews as tvn
 
 GUNOSY = "Gunosy"
 VEHICLE = "Vehicle"
 PRTIMES = "Prtimes"
+TRAVELVOICE = "TravelVoice"
 
 
 @route("/")
 def index():
-	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimes"]
+	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimes", "トラベルボイスニュース"]
 	name_list = [GUNOSY,VEHICLE,PRTIMES]
 	return template("top", name_list=name_list,news_list=news_list)
 
@@ -26,7 +28,9 @@ def news_list():
 	if select == VEHICLE:
 	    news = vn.VehicleNews("https://trafficnews.jp/category/road")
 	if select == PRTIMES:
-	    news = pn.PrtimesNews("https://prtimes.jp/technology/")   	
+	    news = pn.PrtimesNews("https://prtimes.jp/technology/")   
+	if select == TRAVELVOICE:
+	    news = tvn.TravelVoiceNews("https://www.travelvoice.jp/")    	
 	news_list = news.get_news()
 	return template("news_list", news_list=news_list, name=select)
 

@@ -1,14 +1,14 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import  HtmlParser as hp
+from . import  HtmlParser as hp
 
-class GunosyNews():
+class TravelVoiceNews():
 
 	def __init__(self,url):
 		self.url = url
 
 	def get_news(self):
-		html = hp.HtmlParser.get_html('',url=self.url)
+		html = hp.HtmlParser.get_html("",url=self.url)
 		div_news = html.find_all("div",class_="list_title")
 		span_times = html.find_all("span",class_="list_desc_media")
 		all_news = []
