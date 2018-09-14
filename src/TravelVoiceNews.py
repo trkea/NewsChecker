@@ -1,6 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
-from . import  HtmlParser as hp
+import  HtmlParser as hp
 
 class TravelVoiceNews():
 
@@ -14,9 +14,9 @@ class TravelVoiceNews():
 		ul_list = html.find_all("ul", class_="newsbox-list")
 		all_news = []
 		for li_tag in ul_list[0].find_all("li"):
-			title = li_tag.find("a").get("title").replace(" ","")
+			title = li_tag.find("a").get("title").replace(" ", "")
 			href = li_tag.find("a").get("href")
-			time = li_tag.find("span").text
+			time = li_tag.find("span").text.replace(" ", "")
 			news_info = {"title": title, "href": href, "time": time}
 			all_news.append(news_info)	
 		return all_news

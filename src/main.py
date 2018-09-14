@@ -14,7 +14,7 @@ TRAVELVOICE = "TravelVoice"
 @route("/")
 def index():
 	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimes", "トラベルボイスニュース"]
-	name_list = [GUNOSY,VEHICLE,PRTIMES]
+	name_list = [GUNOSY, VEHICLE, PRTIMES, TRAVELVOICE]
 	return template("top", name_list=name_list,news_list=news_list)
 
 

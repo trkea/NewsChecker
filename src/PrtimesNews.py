@@ -1,4 +1,4 @@
-from . import HtmlParser as hp
+import HtmlParser as hp
 
 class PrtimesNews:
 
