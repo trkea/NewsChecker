@@ -5,18 +5,20 @@ import PrtimesNews as pn
 import VehicleNews as vn
 import TravelVoiceNews as tvn
 import InternetWatchNews as ivn
+import TourismEconomyNews as ten
 
 GUNOSY = "Gunosy"
 VEHICLE = "Vehicle"
 PRTIMES = "Prtimes"
 TRAVELVOICE = "TravelVoice"
 INTERNETWATCH = "InternetWatch"
+TOURSIMECONOMY = "TourismEconomy"
 
 
 @route("/")
 def index():
-	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimes", "トラベルボイスニュース", "InternetWatchニュース"]
-	name_list = [GUNOSY, VEHICLE, PRTIMES, TRAVELVOICE, INTERNETWATCH]
+	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimesニュース", "トラベルボイスニュース", "InternetWatchニュース", "観光経済ニュース"]
+	name_list = [GUNOSY, VEHICLE, PRTIMES, TRAVELVOICE, INTERNETWATCH, TOURSIMECONOMY]
 	return template("top", name_list=name_list,news_list=news_list)
 
 
@@ -35,6 +37,8 @@ def news_list():
 	    news = tvn.TravelVoiceNews("https://www.travelvoice.jp/")  
 	if select == INTERNETWATCH:
 		news = ivn.InternetWatchNews("https://internet.watch.impress.co.jp/category/topic/index.html")
+	if select == TOURSIMECONOMY:
+	    news = ten.TourismEconomyNews("https://www.kankokeizai.com/")
 	news_list = news.get_news()
 	return template("news_list", news_list=news_list, name=select)
 

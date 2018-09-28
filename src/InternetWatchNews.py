@@ -25,9 +25,3 @@ class InternetWatchNews():
 			news_info = {"title": title, "href": href, "time": time}
 			all_news.append(news_info)
 		return all_news
-
-
-
-
-
-
