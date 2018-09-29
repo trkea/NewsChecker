@@ -17,7 +17,7 @@ TOURSIMECONOMY = "TourismEconomy"
 
 @route("/")
 def index():
-	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimesニュース", "トラベルボイスニュース", "InternetWatchニュース", "観光経済ニュース"]
+	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimesニュース", "トラベルボイスニュース", "InternetWatchニュース", "観光経済新聞"]
 	name_list = [GUNOSY, VEHICLE, PRTIMES, TRAVELVOICE, INTERNETWATCH, TOURSIMECONOMY]
 	return template("top", name_list=name_list,news_list=news_list)
 
