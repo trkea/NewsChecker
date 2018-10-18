@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+    <title>NewsChecker</title>
+    <link rel="stylesheet" href="/static/css/news_list.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/background.css">
+</head>
+<body>
+	<h2 class="title">{{ name }} News</h2>
+	<div class="list-group">
+	%for news in news_list:
+	    <a class="list-group-item" href='{{news["href"]}}' target="_blank">
+	    	<p>{{ news["title"] }} &nbsp; {{ news["time"] }}</p>
+	    </a>
+	%end  
+	</div>  
+</body>
+</html>
+<script>
+document.onkeydown = function (e){
+    if(e.key === "ArrowLeft") {
+    	history.back();
+    }
+}
+</script>

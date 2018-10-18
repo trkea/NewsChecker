@@ -20,4 +20,5 @@ class GunosyNews():
 			time = span_tag.text
 			news_info = {"title": title, "href": href, "time": time}
 			all_news.append(news_info)
+		print(len(all_news))	
 		return all_news

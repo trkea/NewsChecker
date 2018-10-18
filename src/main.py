@@ -1,4 +1,4 @@
-from bottle import get, static_file,route, run,template,request
+from bottle import get, static_file,route, run,template,request, Bottle
 import requests
 import GunosyNews as gn
 import PrtimesNews as pn
@@ -6,6 +6,9 @@ import VehicleNews as vn
 import TravelVoiceNews as tvn
 import InternetWatchNews as ivn
 import TourismEconomyNews as ten
+import webview
+import threading
+import sys
 
 GUNOSY = "Gunosy"
 VEHICLE = "Vehicle"
@@ -13,9 +16,9 @@ PRTIMES = "Prtimes"
 TRAVELVOICE = "TravelVoice"
 INTERNETWATCH = "InternetWatch"
 TOURSIMECONOMY = "TourismEconomy"
+global app
 
-
-@route("/")
+@route("/top")
 def index():
 	news_list = ["Gunosyニュース IT・科学", "乗り物ニュース", "Prtimesニュース", "トラベルボイスニュース", "InternetWatchニュース", "観光経済新聞"]
 	name_list = [GUNOSY, VEHICLE, PRTIMES, TRAVELVOICE, INTERNETWATCH, TOURSIMECONOMY]
@@ -47,11 +50,18 @@ def news_list():
 def css(filepath):
     return static_file(filepath, root="static/css")
 
-
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
 
-run(host='localhost', port=8080, debug=True, reloader=True)
+def start_server():
+	run(host='localhost', port=8080, debug=True)
+
+serverthread = threading.Thread(target=start_server)
+serverthread.daemon = True
+serverthread.start()
+webview.create_window('bottle test', "http://localhost:8080/top")
+#sys.exit()
+#server.stop()
 
 
