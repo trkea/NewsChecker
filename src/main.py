@@ -54,14 +54,6 @@ def css(filepath):
 def static(path):
     return static_file(path, root='static')
 
-def start_server():
-	run(host='localhost', port=8080, debug=True)
-
-serverthread = threading.Thread(target=start_server)
-serverthread.daemon = True
-serverthread.start()
-webview.create_window('bottle test', "http://localhost:8080/top")
-#sys.exit()
-#server.stop()
+run(host='localhost', port=8080, debug=True)
 
 
